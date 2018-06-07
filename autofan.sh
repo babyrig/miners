@@ -18,7 +18,7 @@ NO_OF_GPUS=$((NO_OF_GPUS - 1));
 # For every GPU, check the temperature and set fan speed
 for i in `seq 0 $NO_OF_GPUS`;
 do
-        TEMP=`/hive/sbin/amdcovc -a $i |grep "Temp" | awk '{print $12}'`
+        TEMP=`/hive/sbin/amdcovc -a $i |grep "Temp" | awk '{print $14}'`
         echo "GPU $i : Temp: $TEMP"
         if [ "$TEMP" -ge 70 ]; then
                 /hive/sbin/amdcovc fanspeed:$i=100
